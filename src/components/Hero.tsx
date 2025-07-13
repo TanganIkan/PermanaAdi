@@ -7,10 +7,11 @@ import { useState, useEffect } from "react";
 import { SiReact, SiNextdotjs, SiJavascript, SiLaravel, SiBootstrap, SiTypescript, SiTailwindcss, SiMysql, SiPython, SiGithub, SiWordpress, SiFigma, SiGit, SiPostman } from "react-icons/si";
 import { PiCodeBold } from "react-icons/pi";
 import { VscCircleFilled } from "react-icons/vsc";
+import Marquee from "react-fast-marquee";
 
 // Data untuk skill agar mudah dikelola
 const skillsData = [
-  { name: "React.js", icon: SiReact, color: "#61DAFB" }, // Menggunakan ikon React sebagai placeholder
+  { name: "React.js", icon: SiReact, color: "#61DAFB" },
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38B2AC" },
   { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
@@ -18,16 +19,20 @@ const skillsData = [
   { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
   { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-  { name: "GitHub", icon: SiGithub, color: "#181717" },
+  { name: "GitHub", icon: SiGithub, color: "#FFFFFF" }, // Dibuat putih agar terlihat di background gelap
   { name: "WordPress", icon: SiWordpress, color: "#21759B" },
-  { name: "Figma", icon: SiFigma, color: "#181717" },
+  { name: "Figma", icon: SiFigma, color: "#FFFFFF" }, // Dibuat putih agar terlihat di background gelap
   { name: "Git", icon: SiGit, color: "#F05032" },
   { name: "Postman", icon: SiPostman, color: "#FF6C37" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
 ];
 
+// --- LOGIKA BARU: Bagi data skill menjadi dua baris ---
+const skillsRow1 = skillsData.slice(0, 7); // Baris pertama berisi 7 skill
+const skillsRow2 = skillsData.slice(7, 14); // Baris kedua berisi 7 skill berikutnya
+
 const Hero: React.FC = () => {
-  // animasi typing effect
+  // animasi typing effect (tidak berubah)
   const [displayText, setDisplayText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -37,9 +42,8 @@ const Hero: React.FC = () => {
   const textsToType = ["Hi, I'm Permana Adi", "Software Engineer", "Frontend Developer"];
 
   useEffect(() => {
+    // ... (logika useEffect Anda tidak perlu diubah)
     const currentText = textsToType[textIndex];
-
-    // Bagian 1: Logika untuk MENGETIK (tidak berubah)
     if (charIndex < currentText.length) {
       const typingTimer = setTimeout(() => {
         setDisplayText((prev) => prev + currentText[charIndex]);
@@ -47,47 +51,43 @@ const Hero: React.FC = () => {
       }, typingSpeed);
       return () => clearTimeout(typingTimer);
     }
-
-    // Bagian 2: Logika untuk JEDA dan MENGHAPUS
     const erasingTimer = setTimeout(
       () => {
         if (displayText.length > 0) {
-          // Proses menghapus huruf per huruf
           setDisplayText((prev) => prev.slice(0, -1));
         } else {
-          // Selesai menghapus, siapkan teks berikutnya
           setCharIndex(0);
           setTextIndex((prev) => (prev + 1) % textsToType.length);
         }
       },
       displayText.length === currentText.length ? delayBetweenTexts : erasingSpeed
     );
-
     return () => clearTimeout(erasingTimer);
   }, [charIndex, displayText, textIndex, textsToType, typingSpeed, erasingSpeed, delayBetweenTexts]);
 
   return (
-    // Menggunakan <section> sebagai container utama untuk hero
     <section className="max-w-3xl">
-      {/* Judul Utama */}
-      <h1 className="text-5xl font-bold tracking-tight">
+      <h1 className="text-5xl font-bold tracking-tight h-14">
+        {" "}
+        {/* Memberi tinggi tetap agar layout stabil */}
         {displayText}
         <span className="animate-pulse">|</span>
       </h1>
-      {/* Info Lokasi dan Status */}
+
       <div className="mt-4 flex items-center gap-4 text-zinc-400 text-sm">
         <span>● Based in Denpasar, Bali, Indonesia</span>
         <VscCircleFilled size={6} className="text-zinc-600" />
         <span>● Onsite</span>
       </div>
-      {/* Paragraf Deskripsi Diri */}
+
       <p className="mt-6 text-base leading-relaxed text-zinc-300">
-        Passionate and seasoned Software Engineer with a strong focus on frontend development. Proficient in TypeScript and well-versed in all aspects of web technologies. Collaborative team player dedicated to delivering efficient,
-        scalable, and visually appealing web applications.
+        Hi, I&apos;m Permana Adi! I&apos;m a developer who believes a web interface should be able to make you smile. Based in Denpasar, Bali, I absolutely love the process of magically turning designs into living, intuitive applications.
+        For me, user satisfaction is number one, which is why I&apos;m so serious about UI/UX details. I balance my days with sessions at the gym and adventures in the gaming world. Both teach me a lot about persistence. Ready for a fun
+        collaboration? I&apos;m looking forward to hearing from you!😊
       </p>
-      {/* Garis Pemisah */}
+
       <hr className="my-8 border-zinc-800" />
-      {/* Bagian Skills */}
+
       <div>
         <div className="flex items-center gap-3">
           <PiCodeBold className="text-zinc-400" size={20} />
@@ -95,14 +95,27 @@ const Hero: React.FC = () => {
         </div>
         <p className="mt-2 text-sm text-zinc-400">My professional skills.</p>
 
-        {/* Kumpulan "Pil" Skill */}
-        <div className="mt-4 flex flex-wrap gap-3">
-          {skillsData.map((skill) => (
-            <div key={skill.name} className="flex items-center gap-3 rounded-full bg-zinc-800 px-3 py-1.5 text-sm">
-              <skill.icon style={{ color: skill.color }} />
-              <span>{skill.name}</span>
-            </div>
-          ))}
+        <div className="mt-4 flex flex-col gap-3">
+          {/* Baris 1: Berjalan ke Kanan */}
+          <Marquee direction="right" speed={40} autoFill={true} pauseOnHover={true}>
+            {skillsRow1.map((skill) => (
+              <div key={skill.name} className="flex flex-shrink-0 items-center gap-2 rounded-full bg-zinc-800 px-4 py-1.5 text-sm mx-1.5">
+                <skill.icon style={{ color: skill.color }} />
+                <span>{skill.name}</span>
+              </div>
+            ))}
+          </Marquee>
+
+          {/* Baris 2: Berjalan ke Kiri */}
+          <Marquee direction="left" speed={40} autoFill={true} pauseOnHover={true}>
+            {skillsRow2.map((skill) => (
+              <div key={skill.name} className="flex flex-shrink-0 items-center gap-2 rounded-full bg-zinc-800 px-4 py-1.5 text-sm mx-1.5">
+                <skill.icon style={{ color: skill.color }} />
+                <span>{skill.name}</span>
+              </div>
+            ))}
+          </Marquee>
+          {/* --- BATAS AKHIR KODE BARU --- */}
         </div>
       </div>
     </section>

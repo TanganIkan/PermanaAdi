@@ -10,7 +10,7 @@ import { useTheme } from "next-themes";
 
 // Menggunakan ikon yang lebih spesifik dari berbagai library di react-icons
 import { GoHome, GoPerson, GoRepo, GoMail } from "react-icons/go";
-import { MdVerified, MdOutlineDashboard } from "react-icons/md";
+import { MdVerified } from "react-icons/md";
 import { FiChevronDown, FiHeart, FiMoon, FiSun } from "react-icons/fi";
 
 // Data untuk link navigasi agar lebih mudah dikelola
@@ -18,7 +18,6 @@ const navLinks = [
   { name: "Home", icon: GoHome, href: "/" },
   { name: "About", icon: GoPerson, href: "/about" },
   { name: "Projects", icon: GoRepo, href: "/projects" },
-  { name: "Dashboard", icon: MdOutlineDashboard, href: "/dashboard" },
   { name: "Contact", icon: GoMail, href: "/contact" },
 ];
 

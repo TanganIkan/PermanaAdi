@@ -31,7 +31,7 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto">
             <div className="flex">
               <Sidebar />
-              <main className="flex-1 p-8 md:p-12 mt-20 text-zinc-900 dark:text-zinc-50">{children}</main>
+              <main className="flex-1 p-8 md:p-12 mt-25 text-zinc-900 dark:text-zinc-50">{children}</main>
             </div>
           </div>
         </ThemeProvider>
