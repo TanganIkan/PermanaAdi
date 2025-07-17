@@ -4,7 +4,7 @@
 import React from "react";
 // Mengimpor ikon-ikon yang kita butuhkan
 import { useState, useEffect } from "react";
-import { SiReact, SiNextdotjs, SiJavascript, SiLaravel, SiBootstrap, SiTypescript, SiTailwindcss, SiMysql, SiPython, SiGithub, SiWordpress, SiFigma, SiGit, SiPostman } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiJavascript, SiLaravel, SiBootstrap, SiTypescript, SiTailwindcss, SiMysql, SiPython, SiGithub, SiWordpress, SiFigma, SiGit, SiPostman, SiHtml5, SiCss3 } from "react-icons/si";
 import { PiCodeBold } from "react-icons/pi";
 import { VscCircleFilled } from "react-icons/vsc";
 import Marquee from "react-fast-marquee";
@@ -25,11 +25,13 @@ const skillsData = [
   { name: "Git", icon: SiGit, color: "#F05032" },
   { name: "Postman", icon: SiPostman, color: "#FF6C37" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
+  { name: "HTML", icon: SiHtml5, color: "#E34F26" }, // Menggunakan ikon React untuk HTML5
+  { name: "CSS", icon: SiCss3, color: "#1572B6" }, // Menggunakan ikon React untuk CSS3
 ];
 
 // --- LOGIKA BARU: Bagi data skill menjadi dua baris ---
-const skillsRow1 = skillsData.slice(0, 7); // Baris pertama berisi 7 skill
-const skillsRow2 = skillsData.slice(7, 14); // Baris kedua berisi 7 skill berikutnya
+const skillsRow1 = skillsData.slice(0, 8); // Baris pertama berisi 7 skill
+const skillsRow2 = skillsData.slice(8, 16); // Baris kedua berisi 7 skill berikutnya
 
 const Hero: React.FC = () => {
   // animasi typing effect (tidak berubah)
@@ -66,7 +68,7 @@ const Hero: React.FC = () => {
   }, [charIndex, displayText, textIndex, textsToType, typingSpeed, erasingSpeed, delayBetweenTexts]);
 
   return (
-    <section className="max-w-3xl">
+    <section className="max-w-4xl">
       <h1 className="text-5xl font-bold tracking-tight h-14">
         {" "}
         {/* Memberi tinggi tetap agar layout stabil */}
@@ -93,9 +95,9 @@ const Hero: React.FC = () => {
           <PiCodeBold className="text-zinc-400" size={20} />
           <h2 className="text-xl font-semibold">Skills</h2>
         </div>
-        <p className="mt-2 text-sm text-zinc-400">My professional skills.</p>
+        <p className="mt-4 text-sm text-zinc-400">My professional skills.</p>
 
-        <div className="mt-4 flex flex-col gap-3">
+        <div className="mt-6 flex flex-col gap-3">
           {/* Baris 1: Berjalan ke Kanan */}
           <Marquee direction="right" speed={40} autoFill={true} pauseOnHover={true}>
             {skillsRow1.map((skill) => (

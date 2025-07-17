@@ -5,7 +5,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { FiDownload } from "react-icons/fi";
-import { PiSuitcaseSimple } from "react-icons/pi";
+import { PiSuitcaseSimple, PiCertificate } from "react-icons/pi";
 import { IoSchoolOutline } from "react-icons/io5";
 import { VscChevronDown, VscChevronUp } from "react-icons/vsc";
 
@@ -37,22 +37,19 @@ const certificateData = [
     title: "Dasar Pemrograman Web",
     issuer: "Dicoding Indonesia",
     date: "October 2024",
-    link: "#", // Ganti dengan link sertifikat Anda
     imageSrc: "/images/dasar web.jpg",
   },
   {
-    title: "Cloud Practitioner Essentials",
-    issuer: "AWS Skill Builder",
-    date: "Juni 2025",
-    link: "#",
-    imageSrc: "/images/aws.png",
+    title: "Complete of the internship program at Taksu Technology",
+    issuer: "Taksu Technology",
+    date: "December 2023",
+    imageSrc: "/images/taksu.jpg",
   },
   {
-    title: "JavaScript Algorithms and Data Structures",
-    issuer: "freeCodeCamp",
-    date: "Mei 2025",
-    link: "#",
-    imageSrc: "/images/freecodecamp.png",
+    title: "Complete of the internship program at PT. Benlaris Sahabat Dewata",
+    issuer: "PT. Benlaris Sahabat Dewata",
+    date: "September 2023",
+    imageSrc: "/images/elementor.jpg",
   },
 ];
 
@@ -80,7 +77,7 @@ const careerData = [
     role: "Web Designer Internship",
     company: "PT. Benlaris Sahabat Dewata",
     logo: "/images/benlaris.jpg",
-    date: "June 2023 - August 2023",
+    date: "July 2023 - September 2023",
     duration: "3 Months",
     type: "Full-time",
     location: "Denpasar, Indonesia",
@@ -227,10 +224,13 @@ const AboutPage: React.FC = () => {
 
       {/* Bagian Sertifikat */}
       <div>
-        <h2 className="text-2xl font-semibold">Sertifikat</h2>
+        <div className="flex items-center gap-3">
+          <PiCertificate className="text-zinc-400" size={20} />
+          <h2 className="text-xl font-semibold">Certificates</h2>
+        </div>
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificateData.map((cert) => (
-            <a key={cert.title} href={cert.link} target="_blank" rel="noopener noreferrer" className="block rounded-lg overflow-hidden bg-zinc-800/50 hover:bg-zinc-800 transition-colors border border-zinc-800 hover:border-zinc-600">
+            <a key={cert.title} className="block rounded-lg overflow-hidden bg-zinc-800/50 hover:bg-zinc-800 transition-colors border border-zinc-800 hover:border-zinc-600">
               {/* Bagian Gambar */}
               <div className="w-full aspect-video bg-zinc-700">
                 <Image

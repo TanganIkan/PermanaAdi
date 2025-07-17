@@ -2,16 +2,14 @@
 
 "use client"; // WAJIB: Agar bisa menggunakan hooks untuk interaktivitas
 
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 
 // Menggunakan ikon yang lebih spesifik dari berbagai library di react-icons
 import { GoHome, GoPerson, GoRepo, GoMail } from "react-icons/go";
 import { MdVerified } from "react-icons/md";
-import { FiChevronDown, FiHeart, FiMoon, FiSun } from "react-icons/fi";
+import { FiHeart } from "react-icons/fi";
 
 // Data untuk link navigasi agar lebih mudah dikelola
 const navLinks = [
@@ -24,29 +22,9 @@ const navLinks = [
 const Sidebar: React.FC = () => {
   // --- HOOKS UNTUK INTERAKTIVITAS ---
   const pathname = usePathname(); // Mendeteksi URL saat ini
-  const { theme, setTheme } = useTheme(); // Hook untuk ganti tema
-  const [mounted, setMounted] = useState(false);
-
-  // Efek untuk mencegah hydration error pada tema
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Fungsi untuk merender tombol ganti tema secara dinamis
-  const renderThemeChanger = () => {
-    if (!mounted) return null; // Jangan render tombol di server
-
-    const isDarkMode = theme === "dark";
-
-    return (
-      <button className="rounded-lg border border-zinc-200 bg-zinc-100 p-2 hover:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700" onClick={() => setTheme(isDarkMode ? "light" : "dark")}>
-        {isDarkMode ? <FiSun /> : <FiMoon />}
-      </button>
-    );
-  };
 
   return (
-    <aside className="h-screen justify-center sticky top-0 flex w-80 flex-col bg-zinc-50 p-6 text-zinc-900 dark:bg-[#09090B] dark:text-zinc-50">
+    <aside className="h-screen justify-center sticky top-0 flex w-80 flex-col">
       {/* --- Bagian Profil --- */}
       <div>
         <div className="flex flex-col items-start gap-4">
@@ -56,17 +34,19 @@ const Sidebar: React.FC = () => {
               <h1 className="text-xl font-bold">Permana Adi</h1>
               <MdVerified size={18} className="text-blue-500" />
             </div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">@permanaadiiii_</p>
+            <p className="text-sm text-zinc-500">@permanaadiiii_</p>
           </div>
         </div>
 
         {/* --- Tombol Interaktif --- */}
-        <div className="mt-8 flex w-full items-center gap-2">
-          <button className="flex flex-1 items-center justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2 text-sm hover:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700">
-            <span>US English</span>
-            <FiChevronDown />
-          </button>
-          {renderThemeChanger()}
+        <div className="mt-8 flex items-center gap-2">
+          <a href="mailto:iputupermanaadiputra@gmail" className="flex items-center justify-center gap-2 rounded-lg border border-zinc-700 bg-trans py-2 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
+            <span>Hire me</span>
+          </a>
         </div>
       </div>
 
