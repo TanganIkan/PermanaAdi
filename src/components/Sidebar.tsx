@@ -39,7 +39,7 @@ const Sidebar: React.FC = () => {
         </div>
 
         {/* --- Tombol Interaktif --- */}
-        <div className="mt-8 flex items-center gap-2">
+        <div className="mt-6 flex items-center">
           <a href="mailto:iputupermanaadiputra@gmail" className="flex items-center justify-center gap-2 rounded-lg border border-zinc-700 bg-trans py-2 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -50,8 +50,10 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
 
+      <hr className="my-6 border-zinc-800" />
+
       {/* --- Menu Navigasi --- */}
-      <nav className="mt-8">
+      <nav>
         <ul className="space-y-1">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -75,8 +77,10 @@ const Sidebar: React.FC = () => {
         </ul>
       </nav>
 
+      <hr className="my-6 border-zinc-800" />
+
       {/* --- Footer Sidebar (didorong ke bawah dengan mt-auto) --- */}
-      <div className="flex items-center gap-1.5 pt-6 px-3 text-xs text-zinc-400 dark:text-zinc-500">
+      <div className="flex items-center gap-1.5 px-3 text-xs text-zinc-400 dark:text-zinc-500">
         © {new Date().getFullYear()} with
         <FiHeart className="text-red-500" fill="red" />
         by permanaadi

@@ -7,7 +7,10 @@ import { useState, useEffect } from "react";
 import { SiReact, SiNextdotjs, SiJavascript, SiLaravel, SiBootstrap, SiTypescript, SiTailwindcss, SiMysql, SiPython, SiGithub, SiWordpress, SiFigma, SiGit, SiPostman, SiHtml5, SiCss3 } from "react-icons/si";
 import { PiCodeBold } from "react-icons/pi";
 import { VscCircleFilled } from "react-icons/vsc";
+import { TbTools } from "react-icons/tb";
 import Marquee from "react-fast-marquee";
+import { Sun } from "lucide-react";
+import Link from "next/link";
 
 // Data untuk skill agar mudah dikelola
 const skillsData = [
@@ -117,7 +120,28 @@ const Hero: React.FC = () => {
               </div>
             ))}
           </Marquee>
-          {/* --- BATAS AKHIR KODE BARU --- */}
+        </div>
+      </div>
+
+      <hr className="my-8 border-zinc-800" />
+      <div>
+        <div className="flex items-center gap-3">
+          <TbTools className="text-zinc-400" size={20} />
+          <h2 className="text-xl font-semibold">Service</h2>
+        </div>
+        <p className="mt-4 text-base leading-relaxed text-zinc-300">I work as a freelancer exceptional website for brand, companies, institutions, and startups focusing on stratrgic web solutions.</p>
+      </div>
+
+      <div className="mt-8 rounded-lg p-4 bg-zinc-800/50 transition-colors border border-zinc-800">
+        <div className="flex items-start gap-4">
+          <Sun className="text-primary w-6 h-6 flex-shrink-0 mt-1 animate-spin" style={{ animationDuration: "3s" }} />
+          <div>
+            <h3 className="text-lg font-semibold text-zinc-200">Let&apos;s work together!</h3>
+            <p className="mt-1 text-sm text-zinc-400">I&apos;m open for freelance projects, feel free to email me to see how can we collaborate.</p>
+            <Link href="/contact">
+              <button className="mt-4 inline-flex items-center justify-center rounded-md text-sm font-medium bg-zinc-800 text-zinc-50 h-10 px-4 py-2 hover:bg-zinc-700 cursor-pointer">Contact me</button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
