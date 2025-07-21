@@ -120,8 +120,11 @@ const AboutPage: React.FC = () => {
         <h1 className="text-4xl font-bold tracking-tight">About</h1>
         <span className="flex mt-4 text-zinc-400">A short story of me</span>
         <p className="mt-4 text-base leading-relaxed text-zinc-300">
-          Di sini Anda bisa menulis paragraf yang lebih mendalam tentang diri Anda. Ceritakan tentang perjalanan Anda memasuki dunia teknologi, apa yang membuat Anda tertarik dengan pemrograman, dan apa tujuan karir Anda di masa depan.
-          Jelaskan juga bagaimana Anda suka belajar hal baru dan berkontribusi dalam sebuah tim.
+          My journey into the world of technology began earlier than for many. It wasn&apos;t a sudden discovery, but a gradual fascination that took root during my time in vocational high school. I chose to major in Software Engineering ,
+          a decision that threw me headfirst into the intricate world of code. Those formative years were a blur of algorithms, late-night debugging sessions, and the unparalleled thrill of watching my first programs come to life. It was
+          here that I realized technology wasn&apos;t just a subject; it was a powerful tool for creation and problem-solving. That initial spark has now grown into a full-fledged passion. I am currently pursuing a degree in Informatics
+          Engineering, building upon the foundational knowledge I gained in high school. University has expanded my perspective, introducing me to more complex concepts and the collaborative spirit of the tech community. My path from a
+          curious high school student to a dedicated university undergraduate has been a continuous adventure of learning and growth, and I am excited to see where it takes me next.
         </p>
       </div>
 
