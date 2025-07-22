@@ -228,7 +228,7 @@ const AboutPage: React.FC = () => {
           <PiCertificate className="text-zinc-400" size={20} />
           <h2 className="text-xl font-semibold">Certificates</h2>
         </div>
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 md:mb-0">
           {certificateData.map((cert) => (
             <a key={cert.title} className="block rounded-lg overflow-hidden bg-zinc-800/50 hover:bg-zinc-800 transition-colors border border-zinc-800 hover:border-zinc-600">
               {/* Bagian Gambar */}

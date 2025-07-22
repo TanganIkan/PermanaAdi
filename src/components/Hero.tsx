@@ -130,7 +130,7 @@ const Hero: React.FC = () => {
         <p className="mt-4 text-base leading-relaxed text-zinc-300">I work as a freelancer exceptional website for brand, companies, institutions, and startups focusing on stratrgic web solutions.</p>
       </div>
 
-      <div className="mt-8 rounded-lg p-4 bg-zinc-800/50 transition-colors border border-zinc-800">
+      <div className="mt-8 mb-8 md:mb-0 rounded-lg p-4 bg-zinc-800/50 transition-colors border border-zinc-800">
         <div className="flex items-start gap-4">
           <Sun className="text-primary w-6 h-6 flex-shrink-0 mt-1 animate-spin" style={{ animationDuration: "3s" }} />
           <div>
@@ -142,6 +142,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+
       {/* Menambahkan style untuk animasi marquee */}
       <style jsx global>{`
         @keyframes marquee-left {

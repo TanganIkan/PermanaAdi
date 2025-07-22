@@ -158,7 +158,7 @@ const ContactPage: React.FC = () => {
             <textarea id="message" name="message" placeholder="Your message..." required className="w-full min-h-[120px] rounded-lg border border-zinc-700 bg-transparent px-3 py-2 text-zinc-50 focus:border-zinc-500 focus:ring-zinc-500" />
           </div>
           {/* Tombol Kirim */}
-          <button type="submit" disabled={status === "loading"} className="w-full rounded-lg bg-zinc-700 py-3 font-semibold text-zinc-50 transition-colors hover:bg-zinc-600 disabled:bg-zinc-800 disabled:cursor-not-allowed">
+          <button type="submit" disabled={status === "loading"} className="w-full rounded-lg bg-zinc-700 py-3 font-semibold text-zinc-50 transition-colors hover:bg-zinc-600 disabled:bg-zinc-800 disabled:cursor-not-allowed mb-8 md:mb-0">
             {status === "loading" ? "Sending..." : "Send Email"}
           </button>
           {/* Pesan Status */}
