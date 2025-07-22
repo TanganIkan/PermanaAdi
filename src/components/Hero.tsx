@@ -71,18 +71,18 @@ const Hero: React.FC = () => {
   }, [charIndex, displayText, textIndex, textsToType, typingSpeed, erasingSpeed, delayBetweenTexts]);
 
   return (
-    <section className="max-w-4xl">
-      <h1 className="text-5xl font-bold tracking-tight h-14">
-        {" "}
-        {/* Memberi tinggi tetap agar layout stabil */}
+    <section>
+      {/* Tipografi Responsif: Ukuran teks berubah sesuai ukuran layar */}
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight min-h-[60px] sm:min-h-[72px]">
         {displayText}
         <span className="animate-pulse">|</span>
       </h1>
 
-      <div className="mt-4 flex items-center gap-4 text-zinc-400 text-sm">
+      {/* Tata Letak Responsif: Menjadi kolom di layar sangat kecil jika perlu */}
+      <div className="flex sm:flex-row sm:items-center gap-2 sm:gap-4 text-zinc-400 text-xs sm:text-sm">
         <span>● Based in Denpasar, Bali, Indonesia</span>
-        <VscCircleFilled size={6} className="text-zinc-600" />
-        <span>● Onsite</span>
+        <VscCircleFilled size={6} className="text-zinc-600 hidden sm:block" />
+        <span className="hidden sm:block">● Onsite</span>
       </div>
 
       <p className="mt-6 text-base leading-relaxed text-zinc-300">
@@ -101,21 +101,18 @@ const Hero: React.FC = () => {
         <p className="mt-4 text-sm text-zinc-400">My professional skills.</p>
 
         <div className="mt-6 flex flex-col gap-3">
-          {/* Baris 1: Berjalan ke Kanan */}
           <Marquee direction="right" speed={40} autoFill={true} pauseOnHover={true}>
             {skillsRow1.map((skill) => (
               <div key={skill.name} className="flex flex-shrink-0 items-center gap-2 rounded-full bg-zinc-800 px-4 py-1.5 text-sm mx-1.5">
-                <skill.icon style={{ color: skill.color }} />
+                <skill.icon style={{ color: skill.color }} className="w-4 h-4" />
                 <span>{skill.name}</span>
               </div>
             ))}
           </Marquee>
-
-          {/* Baris 2: Berjalan ke Kiri */}
           <Marquee direction="left" speed={40} autoFill={true} pauseOnHover={true}>
             {skillsRow2.map((skill) => (
               <div key={skill.name} className="flex flex-shrink-0 items-center gap-2 rounded-full bg-zinc-800 px-4 py-1.5 text-sm mx-1.5">
-                <skill.icon style={{ color: skill.color }} />
+                <skill.icon style={{ color: skill.color }} className="w-4 h-4" />
                 <span>{skill.name}</span>
               </div>
             ))}
@@ -124,6 +121,7 @@ const Hero: React.FC = () => {
       </div>
 
       <hr className="my-8 border-zinc-800" />
+
       <div>
         <div className="flex items-center gap-3">
           <TbTools className="text-zinc-400" size={20} />
@@ -144,6 +142,31 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Menambahkan style untuk animasi marquee */}
+      <style jsx global>{`
+        @keyframes marquee-left {
+          from {
+            transform: translateX(0%);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+        @keyframes marquee-right {
+          from {
+            transform: translateX(-50%);
+          }
+          to {
+            transform: translateX(0%);
+          }
+        }
+        .animate-marquee-left {
+          animation: marquee-left 40s linear infinite;
+        }
+        .animate-marquee-right {
+          animation: marquee-right 40s linear infinite;
+        }
+      `}</style>
     </section>
   );
 };

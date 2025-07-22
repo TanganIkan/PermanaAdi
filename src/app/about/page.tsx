@@ -189,34 +189,31 @@ const AboutPage: React.FC = () => {
         <p className="mt-4 text-sm text-zinc-400">My educational journey.</p>
         <div className="mt-4 space-y-4">
           {educationData.map((edu) => (
-            <div key={edu.institution} className="flex items-center gap-4 p-4 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors border border-zinc-800 hover:border-zinc-600">
-              {/* Bagian Logo */}
-              <div className="w-12 h-12 flex-shrink-0 bg-white rounded-full flex items-center justify-center overflow-hidden">
-                <Image src={edu.logo} alt={`${edu.institution} logo`} width={40} height={40} className="object-contain" />
+            <div key={edu.institution} className="p-4 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors border border-zinc-800 hover:border-zinc-600">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div className="w-12 h-12 flex-shrink-0 bg-white rounded-full flex items-center justify-center overflow-hidden">
+                  <Image src={edu.logo} alt={`${edu.institution} logo`} width={40} height={40} className="object-contain" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-medium text-zinc-100">{edu.institution}</h3>
+                  <p className="mt-1 text-sm text-zinc-300">{edu.degree}</p>
+                  <p className="mt-2 text-xs text-zinc-400">
+                    {edu.date} ・ {edu.location}
+                  </p>
+                </div>
               </div>
-              {/* Bagian Teks */}
-              <div className="flex-1">
-                <h3 className="font-medium text-zinc-100">{edu.institution}</h3>
-                <p className="mt-1 text-sm text-zinc-300">{edu.degree}</p>
-                <p className="mt-2 text-xs text-zinc-400">
-                  {edu.date} ・ {edu.location}
-                </p>
-                {edu.gpa && (
-                  <div className="mt-4 pt-2 border-t border-zinc-700/50 flex items-center justify-between">
-                    {/* Badge GPA */}
-                    <div>
-                      <span className="text-xs font-medium mr-2 text-zinc-400">Current GPA :</span>
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-900/50 text-green-300">{edu.gpa}</span>
-                    </div>
-
-                    {/* Download Transcript */}
-                    <a href={edu.transcriptUrl} download className="inline-flex items-center gap-2 text-xs text-zinc-400 hover:text-white transition-colors">
-                      <FiDownload />
-                      <span>Download Transcript</span>
-                    </a>
+              {edu.gpa && (
+                <div className="mt-4 pt-4 border-t border-zinc-700/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-medium mr-2 text-zinc-400">Current GPA :</span>
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-900/50 text-green-300">{edu.gpa}</span>
                   </div>
-                )}
-              </div>
+                  <a href={edu.transcriptUrl} download className="inline-flex items-center gap-2 text-xs text-zinc-400 hover:text-white transition-colors">
+                    <FiDownload />
+                    <span>Download Transcript</span>
+                  </a>
+                </div>
+              )}
             </div>
           ))}
         </div>
