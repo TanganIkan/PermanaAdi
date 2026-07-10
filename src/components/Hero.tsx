@@ -29,25 +29,26 @@ const skillsData = [
   { name: "Postman", icon: SiPostman, color: "#FF6C37" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
   { name: "HTML", icon: SiHtml5, color: "#E34F26" }, // Menggunakan ikon React untuk HTML5
-  { name: "CSS", icon: SiCss, color: "#1572B6" }, // Menggunakan ikon React untuk CSS3
+  { name: "CSS", icon: SiCss, color: "#1572B6" }, // Menggunakan ikon React untuk CSS
 ];
 
 // --- LOGIKA BARU: Bagi data skill menjadi dua baris ---
-const skillsRow1 = skillsData.slice(0, 8); // Baris pertama berisi 7 skill
-const skillsRow2 = skillsData.slice(8, 16); // Baris kedua berisi 7 skill berikutnya
+const skillsRow1 = skillsData.slice(0, 8); // Baris pertama berisi 8 skill
+const skillsRow2 = skillsData.slice(8, 16); // Baris kedua berisi 8 skill berikutnya
+
+// --- DIPINDAHKAN KE LUAR KOMPONEN UNTUK MENGHILANGKAN WARNING ESLINT ---
+const typingSpeed = 70;
+const erasingSpeed = 50;
+const delayBetweenTexts = 1000;
+const textsToType = ["Hi, I'm Permana Adi", "Software Engineer", "Frontend Developer"];
 
 const Hero: React.FC = () => {
-  // animasi typing effect (tidak berubah)
+  // animasi typing effect
   const [displayText, setDisplayText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const typingSpeed = 70;
-  const erasingSpeed = 50;
-  const delayBetweenTexts = 1000;
-  const textsToType = ["Hi, I'm Permana Adi", "Software Engineer", "Frontend Developer"];
 
   useEffect(() => {
-    // ... (logika useEffect Anda tidak perlu diubah)
     const currentText = textsToType[textIndex];
     if (charIndex < currentText.length) {
       const typingTimer = setTimeout(() => {
@@ -68,7 +69,7 @@ const Hero: React.FC = () => {
       displayText.length === currentText.length ? delayBetweenTexts : erasingSpeed,
     );
     return () => clearTimeout(erasingTimer);
-  }, [charIndex, displayText, textIndex, textsToType, typingSpeed, erasingSpeed, delayBetweenTexts]);
+  }, [charIndex, displayText, textIndex]); // Array dependency sudah dibersihkan
 
   return (
     <section>
