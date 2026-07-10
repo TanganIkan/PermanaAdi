@@ -4,7 +4,10 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FiArrowUpRight } from "react-icons/fi";
-import { SiGmail, SiInstagram, SiLinkedin, SiTiktok, SiGithub } from "react-icons/si";
+// Hapus SiLinkedIn dari sini
+import { SiGithub, SiGmail, SiInstagram, SiTiktok } from "react-icons/si";
+// Tambahkan FaLinkedin dari FontAwesome di sini
+import { FaLinkedin } from "react-icons/fa";
 
 // Data disederhanakan
 const contactLinks = [
@@ -31,7 +34,7 @@ const contactLinks = [
     description: "Connect for collaboration or explore my professional experience.",
     buttonText: "Go to LinkedIn",
     link: "https://www.linkedin.com/in/usernameanda",
-    icon: SiLinkedin,
+    icon: FaLinkedin, // <-- Ubah di sini menjadi FaLinkedin
     gradient: "linkedin",
     span: "half",
   },
@@ -87,7 +90,7 @@ const ContactPage: React.FC = () => {
         (error) => {
           console.log(error.text);
           setStatus("error");
-        }
+        },
       );
     }
   };
@@ -111,10 +114,7 @@ const ContactPage: React.FC = () => {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              // Kelas gradien sekarang dipilih dari "peta"
-              className={`relative block rounded-lg p-6 overflow-hidden transition-transform hover:-translate-y-1 ${
-                gradientClasses[item.gradient] // <-- PERUBAHAN DI SINI
-              } ${item.span === "full" ? "md:col-span-2" : ""}`}
+              className={`relative block rounded-lg p-6 overflow-hidden transition-transform hover:-translate-y-1 ${gradientClasses[item.gradient]} ${item.span === "full" ? "md:col-span-2" : ""}`}
             >
               <item.icon className="absolute -right-4 -bottom-4 text-white/10 text-9xl rotate-12" />
               <div className="relative z-10">

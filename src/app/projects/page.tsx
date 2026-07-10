@@ -46,7 +46,6 @@ const projectsData = [
 const ProjectsPage: React.FC = () => {
   return (
     <section>
-      {/* Header Halaman */}
       <div>
         <div className="flex items-center gap-3">
           <h1 className="text-4xl font-bold tracking-tight">Projects</h1>

@@ -4,7 +4,7 @@
 import React from "react";
 // Mengimpor ikon-ikon yang kita butuhkan
 import { useState, useEffect } from "react";
-import { SiReact, SiNextdotjs, SiJavascript, SiLaravel, SiBootstrap, SiTypescript, SiTailwindcss, SiMysql, SiPython, SiGithub, SiWordpress, SiFigma, SiGit, SiPostman, SiHtml5, SiCss3 } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiJavascript, SiLaravel, SiBootstrap, SiTypescript, SiTailwindcss, SiMysql, SiPython, SiGithub, SiWordpress, SiFigma, SiGit, SiPostman, SiHtml5, SiCss } from "react-icons/si";
 import { PiCodeBold } from "react-icons/pi";
 import { VscCircleFilled } from "react-icons/vsc";
 import { TbTools } from "react-icons/tb";
@@ -29,7 +29,7 @@ const skillsData = [
   { name: "Postman", icon: SiPostman, color: "#FF6C37" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
   { name: "HTML", icon: SiHtml5, color: "#E34F26" }, // Menggunakan ikon React untuk HTML5
-  { name: "CSS", icon: SiCss3, color: "#1572B6" }, // Menggunakan ikon React untuk CSS3
+  { name: "CSS", icon: SiCss, color: "#1572B6" }, // Menggunakan ikon React untuk CSS3
 ];
 
 // --- LOGIKA BARU: Bagi data skill menjadi dua baris ---
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
           setTextIndex((prev) => (prev + 1) % textsToType.length);
         }
       },
-      displayText.length === currentText.length ? delayBetweenTexts : erasingSpeed
+      displayText.length === currentText.length ? delayBetweenTexts : erasingSpeed,
     );
     return () => clearTimeout(erasingTimer);
   }, [charIndex, displayText, textIndex, textsToType, typingSpeed, erasingSpeed, delayBetweenTexts]);
