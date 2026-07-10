@@ -104,10 +104,25 @@ const careerData = [
       "Collaborated to implement UI improvements based on project requirements.",
     ],
   },
+  {
+    id: 4,
+    role: "Operations Administrator",
+    company: "PT. Alam Terbuka Ventures",
+    logo: "/images/oasis.png",
+    date: "Aug 2025 - Jun 2026",
+    duration: "10 Months",
+    type: "Full-time Remote",
+    location: "Denpasar, Indonesia",
+    responsibilities: [
+      "Managed the daily operations of an outdoor and camping gear rental business, handling everything from order bookings to inventory management.",
+      "Handled the company's financial administration, maintaining accurate transaction records and overseeing payroll.",
+      "Analyzed business operations and provided strategic recommendations that successfully drove revenue growth.",
+      "Maintained direct communication with customers to facilitate a seamless booking experience and ensure high satisfaction.",
+    ],
+  },
 ];
 
 const AboutPage: React.FC = () => {
-  // state untuk mengelola apakah bagian pengalaman kerja terbuka atau tidak
   const [expandedId, setExpandedId] = useState<number | null>(0);
 
   const handleToggle = (id: number) => {
@@ -115,7 +130,6 @@ const AboutPage: React.FC = () => {
   };
   return (
     <section>
-      {/* Judul Utama dan Deskripsi */}
       <div>
         <h1 className="text-4xl font-bold tracking-tight">About</h1>
         <span className="flex mt-4 text-zinc-400">A short story of me</span>
@@ -128,10 +142,8 @@ const AboutPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Garis Pemisah */}
       <hr className="my-10 border-zinc-800" />
 
-      {/* Bagian Experience */}
       <div>
         <div className="flex items-center gap-3">
           <PiSuitcaseSimple className="text-zinc-400" size={20} />
@@ -143,7 +155,6 @@ const AboutPage: React.FC = () => {
             const isExpanded = expandedId === job.id;
             return (
               <div key={job.id} className="p-4 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors border border-zinc-800 hover:border-zinc-600">
-                {/* Bagian Atas Kartu */}
                 <div className="flex gap-4">
                   <div className="w-15 h-18 flex-shrink-0 flex items-center justify-center">
                     <Image src={job.logo} alt={job.company} width={60} height={60} className="object-contain" />
@@ -156,14 +167,11 @@ const AboutPage: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                {/* Bagian Bawah Kartu (Responsibilities) */}
                 <div className="mt-4">
-                  {/* Tombol Show/Hide */}
                   <button onClick={() => handleToggle(job.id)} className="flex items-center gap-2 text-xs text-zinc-400 hover:text-zinc-200">
                     {isExpanded ? <VscChevronUp /> : <VscChevronDown />}
                     <span>{isExpanded ? "Hide responsibilities" : "Show responsibilities"}</span>
                   </button>
-                  {/* Daftar Responsibilities yang bisa muncul/hilang */}
                   {isExpanded && (
                     <ul className="mt-3 list-disc list-inside space-y-2 pl-2 text-sm text-zinc-300">
                       {job.responsibilities.map((resp, index) => (
@@ -180,7 +188,6 @@ const AboutPage: React.FC = () => {
 
       <hr className="my-10 border-zinc-800" />
 
-      {/* Bagian Riwayat Pendidikan */}
       <div>
         <div className="flex items-center gap-3">
           <IoSchoolOutline className="text-zinc-400" size={20} />
@@ -219,10 +226,8 @@ const AboutPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Garis Pemisah */}
       <hr className="my-10 border-zinc-800" />
 
-      {/* Bagian Sertifikat */}
       <div>
         <div className="flex items-center gap-3">
           <PiCertificate className="text-zinc-400" size={20} />
@@ -231,18 +236,10 @@ const AboutPage: React.FC = () => {
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 md:mb-0">
           {certificateData.map((cert) => (
             <a key={cert.title} className="block rounded-lg overflow-hidden bg-zinc-800/50 hover:bg-zinc-800 transition-colors border border-zinc-800 hover:border-zinc-600">
-              {/* Bagian Gambar */}
               <div className="w-full aspect-video bg-zinc-700">
-                <Image
-                  src={cert.imageSrc}
-                  alt={`Sertifikat ${cert.title}`}
-                  width={400} // Lebar resolusi gambar untuk kualitas
-                  height={280} // Tinggi resolusi gambar untuk kualitas
-                  className="w-full h-full object-cover"
-                />
+                <Image src={cert.imageSrc} alt={`Sertifikat ${cert.title}`} width={400} height={280} className="w-full h-full object-cover" />
               </div>
 
-              {/* Bagian Teks di Bawah Gambar */}
               <div className="p-4">
                 <h3 className="font-semibold text-zinc-100 line-clamp-2">{cert.title}</h3>
                 <p className="mt-2 text-sm text-zinc-300">{cert.issuer}</p>
