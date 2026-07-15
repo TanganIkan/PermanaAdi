@@ -33,13 +33,13 @@ const projectsData = [
     figma: "https://www.figma.com/design/wrUCQ8aTiLEWhAFHXU8Xy2/UI-SISTEM-MANAJEMEN-PERPUSTAKAAN-OOAD?node-id=0-1&t=d6KA36jrTEGK7Aic-1",
   },
   {
-    title: "E-Commerce Dashboard UI",
-    description: "Modern and minimalist dashboard UI/UX design crafted for e-commerce analytics, featuring dark mode and component-based design system.",
-    tech: ["Figma", "UI/UX Design", "Wireframing"],
-    image: "/images/dashboard-ui.jpg",
+    title: "Maintenance Application UI",
+    description: "Modern and minimalist dashboard UI/UX design crafted for equipment maintenance tracking, facility management, and real-time analytics, featuring a comprehensive component-based design system.",
+    tech: ["Figma"],
+    image: "/images/maintenance.jpg",
     github: "#",
     demo: "#",
-    figma: "https://figma.com/file/link-project-kamu", // <-- Tambahkan link Figma di sini
+    figma: "https://www.figma.com/design/dBINLYMdax6acLcmNZeySE/Aplikasi-Maintenance?node-id=0-1&t=ZJ98yE6ui1Qr0kyO-1",
   },
 ];
 

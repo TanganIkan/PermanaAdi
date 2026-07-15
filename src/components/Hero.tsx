@@ -40,7 +40,7 @@ const skillsRow2 = skillsData.slice(8, 16); // Baris kedua berisi 8 skill beriku
 const typingSpeed = 70;
 const erasingSpeed = 50;
 const delayBetweenTexts = 1000;
-const textsToType = ["Hi, I'm Permana Adi", "Software Engineer", "Frontend Developer"];
+const textsToType = ["Frontend Developer", "UI/UX Enthusiast", "Web Developer"];
 
 const Hero: React.FC = () => {
   // animasi typing effect
@@ -87,9 +87,8 @@ const Hero: React.FC = () => {
       </div>
 
       <p className="mt-6 text-base leading-relaxed text-zinc-300">
-        Hi, I&apos;m Permana Adi! I&apos;m a developer who believes a web interface should be able to make you smile. Based in Denpasar, Bali, I absolutely love the process of magically turning designs into living, intuitive applications.
-        For me, user satisfaction is number one, which is why I&apos;m so serious about UI/UX details. I balance my days with sessions at the gym and adventures in the gaming world. Both teach me a lot about persistence. Ready for a fun
-        collaboration? I&apos;m looking forward to hearing from you!😊
+        Hi, I&apos;m Permana Adi! I&apos;m a Denpasar-based developer passionate about turning creative designs into intuitive, user-friendly web applications. With a strong eye for UI/UX details, I build digital experiences designed to
+        leave users smiling. Off the clock, I stay persistent and energized by hitting the gym. Got a cool project in mind? Let&apos;s make it happen! 🚀
       </p>
 
       <hr className="my-8 border-zinc-800" />
