@@ -8,6 +8,22 @@ import { FiGithub, FiExternalLink, FiFigma } from "react-icons/fi";
 
 const projectsData = [
   {
+    title: "POS System",
+    description: "A comprehensive point-of-sale system designed for retail businesses, featuring inventory management, sales tracking, and customer relationship management.",
+    tech: ["Laravel", "Tailwind CSS", "MySQL"],
+    image: "/images/POS.jpg",
+    github: "#",
+    demo: "https://multibrand.id/",
+  },
+  {
+    title: "Booking Villa",
+    description: "A comprehensive villa booking system with a user-friendly interface for villa owners to manage their properties and for customers to easily book their desired villas.",
+    tech: ["Laravel", "Tailwind CSS", "MySQL"],
+    image: "/images/villa.jpg",
+    github: "https://github.com/TanganIkan/Booking-Villa",
+    demo: "#",
+  },
+  {
     title: "Fit Med Medical",
     description: "A comprehensive medical clinic website featuring a backend CMS management system and detailed information about integrated home care services.",
     tech: ["Next.js", "Tailwind CSS", "TypeScript"],
