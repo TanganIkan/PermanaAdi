@@ -120,6 +120,17 @@ const careerData = [
       "Maintained direct communication with customers to facilitate a seamless booking experience and ensure high satisfaction.",
     ],
   },
+  {
+    id: 5,
+    role: "UI/UX Designer Mentorship",
+    company: "Instiki Developer Club",
+    logo: "/images/IDC.png",
+    date: "Jul 2025 - Present",
+    duration: "1 Year",
+    type: "Mentorship",
+    location: "INSTIKI",
+    responsibilities: ["Mentored students in UI/UX principles, guiding the creation of wireframes and interactive dashboards using Figma.", "Led hands-on training sessions to build functional and user-centered digital prototypes"],
+  },
 ];
 
 const AboutPage: React.FC = () => {
