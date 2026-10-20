@@ -3,8 +3,7 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { FiArrowRight, FiBriefcase, FiDownload, FiMapPin } from "react-icons/fi";
+import { FiBriefcase, FiMapPin } from "react-icons/fi";
 import { siteConfig } from "@/data/site";
 
 // --- DIPINDAHKAN KE LUAR KOMPONEN UNTUK MENGHILANGKAN WARNING ESLINT ---
@@ -65,15 +64,9 @@ const Hero: React.FC = () => {
       </div>
 
       <p className="mt-6 text-base leading-relaxed text-secondary-foreground">
-        I&apos;m a Denpasar-based developer passionate about turning creative designs into intuitive, user-friendly web applications. With a strong eye for UI/UX details, I build digital experiences designed to leave users smiling. Off the
-        clock, I stay persistent and energized by hitting the gym. Got a cool project in mind? Let&apos;s make it happen! 🚀
+        I build websites and apps that are easy to use and work the way people expect. With a background in web development and design, I care about the small details, and I enjoy testing things thoroughly to make sure everything
+        runs smoothly before it reaches users. Off the clock, you&apos;ll usually find me at the gym. Got a project in mind? Let&apos;s make it happen!
       </p>
-
-      <div className="mt-6 flex flex-wrap gap-3">
-        <Link href="/contact" className="group inline-flex items-center gap-2 rounded-lg border border-input px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted">
-          Contact me <FiArrowRight className="transition-transform group-hover:translate-x-0.5" />
-        </Link>
-      </div>
     </section>
   );
 };

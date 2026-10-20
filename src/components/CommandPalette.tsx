@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import type { IconType } from "react-icons";
-import { FiCopy, FiDownload, FiFolder, FiMail, FiSearch } from "react-icons/fi";
+import { FiCopy, FiFolder, FiMail, FiSearch } from "react-icons/fi";
 import { GoHome, GoPerson, GoRepo, GoMail } from "react-icons/go";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { SiGithub, SiInstagram, SiTiktok } from "react-icons/si";
@@ -53,19 +53,6 @@ const CommandPalette: React.FC = () => {
         run: () => router.push(`/projects/${project.slug}`),
       })),
       { id: "theme", group: "Actions", label: "Toggle light/dark mode", icon: MdOutlineDarkMode, keywords: "theme", run: () => toggleTheme() },
-      {
-        id: "cv",
-        group: "Actions",
-        label: "Download CV",
-        icon: FiDownload,
-        keywords: "resume",
-        run: () => {
-          const link = document.createElement("a");
-          link.href = siteConfig.cv.href;
-          link.download = siteConfig.cv.fileName;
-          link.click();
-        },
-      },
       {
         id: "copy-email",
         group: "Actions",
@@ -153,7 +140,14 @@ const CommandPalette: React.FC = () => {
     <>
       <AnimatePresence>
         {isOpen && (
-          <motion.div className="fixed inset-0 z-200 flex items-start justify-center bg-black/50 px-4 pt-[15vh] backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }} onClick={close}>
+          <motion.div
+            className="fixed inset-0 z-200 flex items-start justify-center bg-black/50 px-4 pt-[15vh] backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            onClick={close}
+          >
             <motion.div
               role="dialog"
               aria-modal="true"
