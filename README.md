@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Permana Adi — Portfolio
+
+Personal portfolio of **I Putu Permana Adi Putra**, a Denpasar-based frontend developer and UI/UX enthusiast.
+
+Live: [permana-adi.vercel.app](https://permana-adi.vercel.app)
+
+## Features
+
+- **Home** — introduction, featured projects, skills, and services
+- **About** — background story, work experience, education, and certificates
+- **Projects** — project overview plus a case study page for every project (`/projects/[slug]`)
+- **Contact** — social media links and a contact form (powered by EmailJS)
+- **Light/dark mode** with an animated circular transition
+- **Command palette** — press `⌘K` / `Ctrl K` to navigate, switch theme, download the CV, and more
+- **SEO** — per-page metadata, generated Open Graph image, sitemap, robots.txt, and JSON-LD
+- Scroll-reveal and page transition animations that respect the "reduce motion" setting
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) (App Router) + React + TypeScript
+- [Tailwind CSS](https://tailwindcss.com) v4
+- [Framer Motion](https://motion.dev) for animations
+- [React Icons](https://react-icons.github.io/react-icons/) and [Lucide](https://lucide.dev)
+- [EmailJS](https://www.emailjs.com) for the contact form
+- [Vercel Analytics](https://vercel.com/docs/analytics)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # start the dev server at http://localhost:3000
+npm run build   # production build
+npm run lint    # run ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Updating Content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Most content lives in `src/data/`, so updating the site rarely requires touching components:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| File                   | Content                                                                             |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| `src/data/site.ts`     | Name, role, contact email, social links, CV path, site URL                          |
+| `src/data/projects.ts` | Projects and their case studies (`featured: true` shows a project on the home page) |
+| `src/data/about.ts`    | Work experience, education, and certificates                                        |
 
-## Learn More
+Experience dates use the `YYYY-MM` format. The date range and duration are calculated automatically; leave `end` empty for an ongoing role.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── layout.tsx            # Root layout: sidebar, theme script, metadata, command palette
+│   ├── template.tsx          # Page transition animation
+│   ├── globals.css           # Theme color tokens (light & dark)
+│   ├── page.tsx              # Home
+│   ├── about/                # About page
+│   ├── projects/             # Projects page and [slug] case studies
+│   ├── contact/              # Contact page
+│   ├── opengraph-image.tsx   # Generated social preview image
+│   ├── icon.tsx              # Generated favicon
+│   ├── sitemap.ts, robots.ts
+│   └── not-found.tsx         # Custom 404 page
+├── components/               # UI components (Sidebar, Hero, ProjectCard, CommandPalette, ...)
+├── data/                     # Site content (see "Updating Content")
+└── lib/                      # Helpers: theme switching, dates, metadata
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Email: [iputupermanaadiputra@gmail.com](mailto:iputupermanaadiputra@gmail.com)
+- LinkedIn: [permana-adi](https://www.linkedin.com/in/permana-adi-98480a255/)
+- GitHub: [TanganIkan](https://github.com/TanganIkan)

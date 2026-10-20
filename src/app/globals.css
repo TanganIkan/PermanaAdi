@@ -1,31 +1,70 @@
 @import "tailwindcss";
-@tailwind utilities;
+
+/* Varian dark: aktif saat <html> memiliki class "dark" (diatur oleh ThemeToggle) */
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #18181b;
+  --secondary-foreground: #3f3f46;
+  --muted-foreground: #71717a;
+  --muted: #f4f4f5;
+  --card: #fafafa;
+  --border: #e4e4e7;
+  --input: #d4d4d8;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --secondary-foreground: #d4d4d8;
+  --muted-foreground: #a1a1aa;
+  --muted: #27272a;
+  --card: #18181b;
+  --border: #27272a;
+  --input: #3f3f46;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-input: var(--input);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Garis fokus yang jelas untuk navigasi keyboard (tidak muncul saat diklik dengan mouse).
+   Berada di layer base agar class utility seperti `outline-none` tetap bisa menimpanya. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Matikan crossfade bawaan View Transitions; animasi lingkaran diatur di ThemeToggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

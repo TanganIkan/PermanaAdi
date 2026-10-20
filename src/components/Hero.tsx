@@ -2,45 +2,16 @@
 "use client";
 
 import React from "react";
-// Mengimpor ikon-ikon yang kita butuhkan
 import { useState, useEffect } from "react";
-import { SiReact, SiNextdotjs, SiJavascript, SiLaravel, SiBootstrap, SiTypescript, SiTailwindcss, SiMysql, SiPython, SiGithub, SiWordpress, SiFigma, SiGit, SiPostman, SiHtml5, SiCss } from "react-icons/si";
-import { PiCodeBold } from "react-icons/pi";
-import { VscCircleFilled } from "react-icons/vsc";
-import { TbTools } from "react-icons/tb";
-import Marquee from "react-fast-marquee";
-import { Sun } from "lucide-react";
 import Link from "next/link";
-
-// Data untuk skill agar mudah dikelola
-const skillsData = [
-  { name: "React.js", icon: SiReact, color: "#61DAFB" },
-  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38B2AC" },
-  { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
-  { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
-  { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
-  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-  { name: "GitHub", icon: SiGithub, color: "#FFFFFF" }, // Dibuat putih agar terlihat di background gelap
-  { name: "WordPress", icon: SiWordpress, color: "#21759B" },
-  { name: "Figma", icon: SiFigma, color: "#FFFFFF" }, // Dibuat putih agar terlihat di background gelap
-  { name: "Git", icon: SiGit, color: "#F05032" },
-  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-  { name: "Python", icon: SiPython, color: "#3776AB" },
-  { name: "HTML", icon: SiHtml5, color: "#E34F26" }, // Menggunakan ikon React untuk HTML5
-  { name: "CSS", icon: SiCss, color: "#1572B6" }, // Menggunakan ikon React untuk CSS
-];
-
-// --- LOGIKA BARU: Bagi data skill menjadi dua baris ---
-const skillsRow1 = skillsData.slice(0, 8); // Baris pertama berisi 8 skill
-const skillsRow2 = skillsData.slice(8, 16); // Baris kedua berisi 8 skill berikutnya
+import { FiArrowRight, FiBriefcase, FiDownload, FiMapPin } from "react-icons/fi";
+import { siteConfig } from "@/data/site";
 
 // --- DIPINDAHKAN KE LUAR KOMPONEN UNTUK MENGHILANGKAN WARNING ESLINT ---
 const typingSpeed = 70;
 const erasingSpeed = 50;
 const delayBetweenTexts = 1000;
-const textsToType = ["Frontend Developer", "UI/UX Enthusiast", "Web Developer"];
+const textsToType = ["QA Engineer", "UI/UX Enthusiast", "Web Developer"];
 
 const Hero: React.FC = () => {
   // animasi typing effect
@@ -69,105 +40,40 @@ const Hero: React.FC = () => {
       displayText.length === currentText.length ? delayBetweenTexts : erasingSpeed,
     );
     return () => clearTimeout(erasingTimer);
-  }, [charIndex, displayText, textIndex]); // Array dependency sudah dibersihkan
+  }, [charIndex, displayText, textIndex]);
 
   return (
     <section>
-      {/* Tipografi Responsif: Ukuran teks berubah sesuai ukuran layar */}
-      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight min-h-[60px] sm:min-h-[72px]">
-        {displayText}
-        <span className="animate-pulse">|</span>
-      </h1>
+      <p className="text-base text-muted-foreground">Hi, I&apos;m</p>
+      <h1 className="mt-1 text-4xl sm:text-5xl font-bold tracking-tight">{siteConfig.name}</h1>
 
-      {/* Tata Letak Responsif: Menjadi kolom di layar sangat kecil jika perlu */}
-      <div className="flex sm:flex-row sm:items-center gap-2 sm:gap-4 text-zinc-400 text-xs sm:text-sm">
-        <span>● Based in Denpasar, Bali, Indonesia</span>
-        <VscCircleFilled size={6} className="text-zinc-600 hidden sm:block" />
-        <span className="hidden sm:block">● Onsite</span>
-      </div>
-
-      <p className="mt-6 text-base leading-relaxed text-zinc-300">
-        Hi, I&apos;m Permana Adi! I&apos;m a Denpasar-based developer passionate about turning creative designs into intuitive, user-friendly web applications. With a strong eye for UI/UX details, I build digital experiences designed to
-        leave users smiling. Off the clock, I stay persistent and energized by hitting the gym. Got a cool project in mind? Let&apos;s make it happen! 🚀
+      <p className="mt-3 text-2xl sm:text-3xl font-semibold text-secondary-foreground min-h-9 sm:min-h-10">
+        <span className="sr-only">{textsToType.join(", ")}</span>
+        <span aria-hidden="true">
+          {displayText}
+          <span className="animate-pulse">|</span>
+        </span>
       </p>
 
-      <hr className="my-8 border-zinc-800" />
-
-      <div>
-        <div className="flex items-center gap-3">
-          <PiCodeBold className="text-zinc-400" size={20} />
-          <h2 className="text-xl font-semibold">Skills</h2>
-        </div>
-        <p className="mt-4 text-sm text-zinc-400">My professional skills.</p>
-
-        <div className="mt-6 flex flex-col gap-3">
-          <Marquee direction="right" speed={40} autoFill={true} pauseOnHover={true}>
-            {skillsRow1.map((skill) => (
-              <div key={skill.name} className="flex flex-shrink-0 items-center gap-2 rounded-full bg-zinc-800 px-4 py-1.5 text-sm mx-1.5">
-                <skill.icon style={{ color: skill.color }} className="w-4 h-4" />
-                <span>{skill.name}</span>
-              </div>
-            ))}
-          </Marquee>
-          <Marquee direction="left" speed={40} autoFill={true} pauseOnHover={true}>
-            {skillsRow2.map((skill) => (
-              <div key={skill.name} className="flex flex-shrink-0 items-center gap-2 rounded-full bg-zinc-800 px-4 py-1.5 text-sm mx-1.5">
-                <skill.icon style={{ color: skill.color }} className="w-4 h-4" />
-                <span>{skill.name}</span>
-              </div>
-            ))}
-          </Marquee>
-        </div>
+      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-muted-foreground text-xs sm:text-sm">
+        <span className="inline-flex items-center gap-1.5">
+          <FiMapPin /> Based in {siteConfig.location}
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <FiBriefcase /> Onsite
+        </span>
       </div>
 
-      <hr className="my-8 border-zinc-800" />
+      <p className="mt-6 text-base leading-relaxed text-secondary-foreground">
+        I&apos;m a Denpasar-based developer passionate about turning creative designs into intuitive, user-friendly web applications. With a strong eye for UI/UX details, I build digital experiences designed to leave users smiling. Off the
+        clock, I stay persistent and energized by hitting the gym. Got a cool project in mind? Let&apos;s make it happen! 🚀
+      </p>
 
-      <div>
-        <div className="flex items-center gap-3">
-          <TbTools className="text-zinc-400" size={20} />
-          <h2 className="text-xl font-semibold">Service</h2>
-        </div>
-        <p className="mt-4 text-base leading-relaxed text-zinc-300">I work as a freelancer exceptional website for brand, companies, institutions, and startups focusing on stratrgic web solutions.</p>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link href="/contact" className="group inline-flex items-center gap-2 rounded-lg border border-input px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+          Contact me <FiArrowRight className="transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </div>
-
-      <div className="mt-8 mb-8 md:mb-0 rounded-lg p-4 bg-zinc-800/50 transition-colors border border-zinc-800">
-        <div className="flex items-start gap-4">
-          <Sun className="text-primary w-6 h-6 flex-shrink-0 mt-1 animate-spin" style={{ animationDuration: "3s" }} />
-          <div>
-            <h3 className="text-lg font-semibold text-zinc-200">Let&apos;s work together!</h3>
-            <p className="mt-1 text-sm text-zinc-400">I&apos;m open for freelance projects, feel free to email me to see how can we collaborate.</p>
-            <Link href="/contact">
-              <button className="mt-4 inline-flex items-center justify-center rounded-md text-sm font-medium bg-zinc-800 text-zinc-50 h-10 px-4 py-2 hover:bg-zinc-700 cursor-pointer">Contact me</button>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Menambahkan style untuk animasi marquee */}
-      <style jsx global>{`
-        @keyframes marquee-left {
-          from {
-            transform: translateX(0%);
-          }
-          to {
-            transform: translateX(-50%);
-          }
-        }
-        @keyframes marquee-right {
-          from {
-            transform: translateX(-50%);
-          }
-          to {
-            transform: translateX(0%);
-          }
-        }
-        .animate-marquee-left {
-          animation: marquee-left 40s linear infinite;
-        }
-        .animate-marquee-right {
-          animation: marquee-right 40s linear infinite;
-        }
-      `}</style>
     </section>
   );
 };
